@@ -79,9 +79,6 @@ router.post('/categories', requireToken, (req, res, next) => {
 // UPDATE
 // PATCH /examples/5a7db6c74d55bc51bdf39793
 router.patch('/categories/:id', requireToken, removeBlanks, (req, res, next) => {
-  req.body.category = {text: req.body.newInterest}
-  req.body.category.owner = req.user.id
-
   delete req.body.category.owner
 
   Category.findById(req.params.id)
